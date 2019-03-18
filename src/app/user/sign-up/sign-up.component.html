@@ -1,0 +1,41 @@
+<div class="col-md-12 text-center">
+	<div class="rounded-form">
+	<form [formGroup]="registerForm" (ngSubmit)="signUp(Userdata,UserdataValidation)">
+		<label for="username" >Username</label>
+		<div class="emailClass">
+			<input id="username" type="text"  formControlName="username" [(ngModel)]="Userdata.username" [ngClass]="{ 'is-invalid': submitted == true && f.username.errors }">
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Email is required</div>
+          </div>
+		</div>
+		<label for="email" >Email</label>
+		<div class="emailClass">
+			<input id="email" type="email"  formControlName="email" [(ngModel)]="Userdata.emails" [ngClass]="{ 'is-invalid': submitted == true && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+		</div>
+		<label for="password" >Password</label>
+		<div class="pass">
+			<input type="password" name="password" formControlName="password" [(ngModel)]="Userdata.password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.cpassword.errors.ageRange">min length 6 and max 12</div>
+          </div>
+		</div>
+		<label for="re-password" >Password</label>
+		<div class="pass">
+			<input type="password" name="cpassword" formControlName="cpassword" [(ngModel)]="UserdataValidation.cpassword" [ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }">
+          <div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
+            <div *ngIf="f.cpassword.errors.required">Password is required</div>
+            <div *ngIf="f.cpassword.errors.passMatch">passsword not match</div>
+            
+          </div>
+		</div>
+		<div class="submit-class">
+			<button  class="btn btn-primary">SignUp</button>
+		</div>
+	</form>
+	</div>
+</div>

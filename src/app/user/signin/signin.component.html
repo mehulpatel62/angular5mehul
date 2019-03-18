@@ -1,0 +1,26 @@
+<div class="col-md-12 text-center">
+	<div class="rounded-form">
+	<form [formGroup]="loginForm" (ngSubmit)="signIn(Userdata)">
+		<label for="email" >Email</label>
+		<div class="emailClass">
+			<input id="email" type="email"  formControlName="email" [(ngModel)]="Userdata.emails" [ngClass]="{ 'is-invalid': submitted == true && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+		</div>
+		<label for="email" >Password</label>
+		<div class="pass">
+			<input type="password" name="password" formControlName="password" [(ngModel)]="Userdata.password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+		</div>
+		<div class="submit-class">
+			<button  class="btn btn-primary">LOGIN</button>
+		</div>
+	</form>
+	</div>
+</div>
+
+    

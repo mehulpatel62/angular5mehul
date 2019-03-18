@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { HeaderComponent } from './shared/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-BlogApp';
+  title = 'blogs';
+@ViewChild(HeaderComponent)
+    private numberComponent: HeaderComponent;
+    increase() {
+       this.numberComponent.increaseByOne();
+    }
+    decrease() {
+       this.numberComponent.decreaseByOne();
+    }
+  ngOnInit() { 
+     
+   } 
 }
